@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PDF 合并工具</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <h1>PDF 合并工具</h1>
+          <p>拖拽或点击上传 PDF，然后调整顺序、选择压缩，再合并并预览下载。</p>
+        </div>
+        <div class="version">兼容 macOS 10.14+, Windows 10+</div>
+      </header>
+
+      <section class="card upload-card">
+        <div class="upload-area" id="drop-zone">
+          <div class="upload-icon">📄</div>
+          <div>拖拽 PDF 到此或</div>
+          <button id="browse">点击选择文件</button>
+          <input id="file-input" type="file" accept="application/pdf" multiple hidden />
+        </div>
+      </section>
+
+      <section class="card controls">
+        <button id="merge-btn" class="primary hero">一键合并并预览</button>
+        <div class="left">
+          <label>
+            <input type="checkbox" id="compress" /> 合并时启用 PDF 压缩
+          </label>
+        </div>
+      </section>
+      <section class="card progress-card">
+        <div class="progress-title">合并进度</div>
+        <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+      </section>
+
+      <section class="card file-list-card">
+        <div class="file-list-header">
+          <h2>文件列表</h2>
+          <div class="file-list-actions">
+            <span id="status">未选择文件</span>
+            <button id="clear-btn" class="ghost" disabled>清空文件</button>
+          </div>
+        </div>
+        <div id="file-list" class="file-list"></div>
+      </section>
+      </section>
+
+      <section class="card preview-card">
+        <div class="preview-header">
+          <div class="preview-title-row">
+            <h2>合并预览</h2>
+            <button id="zoom-preview" class="ghost">🔍 放大预览</button>
+          </div>
+          <button id="download-btn" class="primary" disabled>下载合并 PDF</button>
+        </div>
+        <div id="preview-wrap" class="preview-wrap">
+          <div class="empty">合并后 PDF 预览将在这里显示</div>
+        </div>
+      </section>
+
+      <div id="preview-modal" class="preview-modal hidden">
+        <div class="preview-modal-content">
+          <div class="preview-modal-header">
+            <h3>放大预览</h3>
+            <button id="close-preview-modal" class="ghost">关闭</button>
+          </div>
+          <div id="modal-preview-body" class="modal-preview-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="renderer.js"></script>
+  </body>
+</html>
