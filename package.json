@@ -7,8 +7,8 @@
   "scripts": {
     "start": "electron .",
     "hot": "nodemon --watch src --watch package.json --exec \"electron .\"",
-    "dist": "electron-builder",
-    "dist:win": "electron-builder --win"
+    "dist": "electron-builder && node scripts/cleanup-dist.js",
+    "dist:win": "electron-builder --win && node scripts/cleanup-dist.js"
   },
   "build": {
     "appId": "com.pdfmerge.app",
